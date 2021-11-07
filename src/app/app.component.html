@@ -1,0 +1,42 @@
+<div *ngIf="brosis" class="app bg-opacity-75"
+     style="background: pink">
+  <div class="container-fluid text-center m-2">
+
+    <ng-container *ngIf="!loginData.username">
+      <a [href]="googleAuthUrl"
+         class="btn btn-block btn-outline-primary col-md-2 m-1 bg">
+        Login-Google
+      </a>
+    </ng-container>
+    <button *ngIf="loginData.username" (click)="logout()"
+            class="btn btn-block btn-outline-primary col-md-2 m-1">
+      Exit
+    </button>
+
+  </div>
+  <div class="container-fluid text-center">
+    <small *ngIf="loginData.username">
+      {{brosis.updateName}}! sent by {{brosis.name}} at {{brosis.date | date : 'short'}}
+    </small>
+
+    <div class="container-fluid">
+      <div>
+        <div>
+          Bro {{brosis.bro}}
+        </div>
+        <div>
+          Sis {{brosis.sis}}
+        </div>
+      </div>
+
+      <ng-container *ngIf="loginData.username">
+        <button class="btn btn-primary btn-lg col-md-4 m-3"
+                (click)="sendAction('bro')">Bro
+        </button>
+        <button class="btn btn-primary btn-lg col-md-4 m-3"
+                (click)="sendAction('sis')">Sis
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
